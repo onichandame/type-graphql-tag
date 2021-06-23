@@ -1,0 +1,30 @@
+{
+  "name": "@onichandame/type-graphql-tag",
+  "version": "0.0.0",
+  "description": "typed gql tag",
+  "main": "dist/index",
+  "dependencies": {
+    "typescript": "^4.3.4"
+  },
+  "devDependencies": {
+    "graphql-tag": "^2.12.4"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/onichandame/type-graphql-tag.git"
+  },
+  "keywords": [
+    "typescript",
+    "apollo",
+    "graphql"
+  ],
+  "author": "onichandame",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/onichandame/type-graphql-tag/issues"
+  },
+  "homepage": "https://github.com/onichandame/type-graphql-tag#readme"
+}
