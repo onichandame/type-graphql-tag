@@ -6,10 +6,23 @@
   "dependencies": {
     "typescript": "^4.3.4"
   },
+  "peerDependencies": {
+    "graphql": "^15.5.1",
+    "graphql-tag": "^2.12.4",
+    "reflect-metadata": "^0.1.13"
+  },
   "devDependencies": {
-    "graphql-tag": "^2.12.4"
+    "@jest/types": "^27.0.2",
+    "@types/jest": "^26.0.23",
+    "graphql": "^15.5.1",
+    "graphql-tag": "^2.12.4",
+    "jest": "^27.0.5",
+    "reflect-metadata": "^0.1.13",
+    "ts-jest": "^27.0.3",
+    "ts-node": "^10.0.0"
   },
   "scripts": {
+    "build": "tsc -p ./tsconfig.build.json",
     "test": "jest"
   },
   "repository": {
