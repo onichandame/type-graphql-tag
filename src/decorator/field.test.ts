@@ -1,5 +1,5 @@
 import { Field } from "./field";
-import { FIELDS_META, FieldsMeta } from "../helper";
+import { getFieldsMeta, FieldsMeta } from "../helper";
 
 class TestNestedData {
   @Field()
@@ -21,16 +21,16 @@ class TestChildData extends TestBaseData {
 
 describe(__filename, () => {
   it(`adds fields metadata`, async () => {
-    expect(Reflect.getMetadata(FIELDS_META, new TestBaseData())).toEqual({
+    expect(getFieldsMeta(new TestBaseData())).toEqual({
       id: { type: String },
     } as FieldsMeta);
   });
 
   it(`works in inheritance`, async () => {
-    expect(Reflect.getMetadata(FIELDS_META, TestChildData.prototype)).toEqual({
+    expect(getFieldsMeta(new TestChildData())).toEqual({
       id: { type: String },
       random: { type: Number, nullable: true },
-      nested: { type: { nested: { type: String } } },
+      nested: { type: TestNestedData },
     } as FieldsMeta);
   });
 });

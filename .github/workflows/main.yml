@@ -1,0 +1,14 @@
+name: main
+on:
+  push:
+    branches:
+      - main
+      - master
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Test
+        uses: onichandame/node-test-action@0.0.0

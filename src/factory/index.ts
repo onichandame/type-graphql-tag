@@ -1,1 +1,1 @@
-export * from "./createFunction";
+export * from "./createSchema";

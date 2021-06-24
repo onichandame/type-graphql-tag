@@ -1,14 +1,20 @@
 import { OperationTypeNode } from "graphql";
 
-import { FIELD_ARRAY } from "../helper";
+import { createInput, createFunctionInput } from "./createInput";
+import { createOutput } from "./createOutput";
 
 export const createFunction = (args: {
   operation: OperationTypeNode;
-  name: string;
-  args: FunctionConstructor;
-  resp: Function;
+  endpoint: string;
+  output: Function;
+  name?: string;
+  input?: Function;
 }) => {
-  const respFields: string[] = Object.keys(
-    Reflect.getMetadata(FIELD_ARRAY, args.resp)
-  );
+  return `${args.operation} ${args.name ? args.name : ``}${
+    args.input ? `(${createInput(args.input)})` : ``
+  }{
+    ${args.endpoint}${args.input ? `(${createFunctionInput(args.input)})` : ``}{
+      ${createOutput(args.output)}
+      }
+  }`;
 };
