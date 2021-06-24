@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "description": "typed gql tag",
   "main": "dist/index",
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "typescript": "^4.3.4"
   },
