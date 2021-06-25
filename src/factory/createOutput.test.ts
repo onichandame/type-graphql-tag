@@ -11,8 +11,8 @@ class TestOutputType {
   @Field()
   id!: string;
 
-  @Field({ nullable: true })
-  nested?: TestNestedType;
+  @Field({ type: () => [TestNestedType], nullable: true })
+  nested?: TestNestedType[];
 }
 
 describe(__filename, () => {

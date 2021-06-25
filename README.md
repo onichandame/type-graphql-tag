@@ -5,28 +5,42 @@
 ```typescript
 import {Field,Type,createSchema} from '@onichandame/type-graphql-tag'
 
-@Type()
 class User {
-@Field()
-name!:string
+  @Field()
+  name!:string
 }
 
-@Type()
+@Type(`PostComment`)
+class Comment{
+  @Field()
+  text!:string
+}
+
 class Post {
 @Field()
 author!:User
+  @Field({[Comment]})
+  comments!:Comment[]
 }
 
+class PostAddCommentsInput{
+  @Field({type:()=>[Comment]})
+  comments: Comment[]
+}
+
+const schema=createSchema({operation:`mutation`,endpoint:`addComments`,output:Post,input:PostAddCommentsInput})
 /* Same as below
 const schema = gql`
-  mutation {
-    getPost{
+  mutation ($comments: [PostCommentInput]){
+    addComments (comments: $comments){
       author {
         name
+        comments {
+          text
+        }
       }
     }
   }
 `
 */
-const schema=createSchema({operation:`query`,endpoint:`getPost`,output:Post})
 ```
