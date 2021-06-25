@@ -7,7 +7,9 @@ export const createOutput = (cls: Function) => {
     const field = fields[key];
     arr.push(key);
     if (!isPrimaryData(field.type)) {
-      const subFields = createOutput(field.type);
+      let subFields = ``;
+      if (Array.isArray(field.type)) subFields = createOutput(field.type[0]);
+      else subFields = createOutput(field.type);
       if (subFields) arr.push(`{ ${subFields} }`);
     }
   }

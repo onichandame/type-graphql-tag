@@ -7,6 +7,10 @@ export const createInput = (cls: Function) => {
     const field = fields[key];
     let typeName = ``;
     if (isPrimaryData(field.type)) typeName = field.type.name;
+    else if (Array.isArray(field.type))
+      typeName = `[${field.type.map(
+        (cls) => getTypeMeta(cls.prototype).name
+      )}]`;
     else typeName = getTypeMeta(field.type.prototype).name;
     args.push(`$${key}: ${typeName}${!field.nullable ? `!` : ``}`);
   }

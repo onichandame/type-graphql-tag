@@ -15,8 +15,8 @@ class TestChildData extends TestBaseData {
   @Field({ nullable: true })
   random?: number;
 
-  @Field()
-  nested?: TestNestedData;
+  @Field({ type: [TestNestedData] })
+  nested?: TestNestedData[];
 }
 
 describe(__filename, () => {
@@ -30,7 +30,7 @@ describe(__filename, () => {
     expect(getFieldsMeta(new TestChildData())).toEqual({
       id: { type: String },
       random: { type: Number, nullable: true },
-      nested: { type: TestNestedData },
+      nested: { type: [TestNestedData] },
     } as FieldsMeta);
   });
 });
